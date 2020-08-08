@@ -1,0 +1,3 @@
+{
+    "db": "mongodb+srv://ano:anocrowd@crowd-funding.smjde.mongodb.net/user?retryWrites=true&w=majority"
+}
