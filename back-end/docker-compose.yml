@@ -1,0 +1,17 @@
+version: "2"
+services: 
+    rabbit:
+        container_name: rabbit
+        image: rabbitmq
+        ports: 
+            - 5673:5673
+    post:
+        container_name: post-services
+        restart: always
+        build: ./micro-services/post-service
+        depends_on: 
+                [rabbit]
+        ports: 
+            - 8000:8000
+        links: [rabbit]
+

@@ -12,6 +12,8 @@ router.get('/:id', async (req, res) => {
 });
 
 router.post('/', async (req, res) => {
+    console.log(`Request body: ${req.body}`)
+    if(!req.body) return res.status(400).send("User data was not found in the request body.");
 
     const personOrOrganization = new PersonOrOrganization({
         user_name: req.body.user_name,

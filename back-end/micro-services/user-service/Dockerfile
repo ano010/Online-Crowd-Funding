@@ -1,13 +1,12 @@
 FROM node:latest
 
 # Create app directory
-WORKDIR /usr/src/app
+WORKDIR /app
 
-COPY ./src .
+COPY ./src /app
 
 RUN npm install
 
 EXPOSE 4000
-
 CMD ["npm", "start"]
 
