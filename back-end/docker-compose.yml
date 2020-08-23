@@ -1,17 +1,20 @@
-version: "2"
+version: "3"
 services: 
     rabbit:
         container_name: rabbit
         image: rabbitmq
         ports: 
-            - 5673:5673
-    post:
-        container_name: post-services
+            - 5672:5672
+        network_mode: bridge
+    user:
+        container_name: user-services
         restart: always
-        build: ./micro-services/post-service
-        depends_on: 
-                [rabbit]
+        build: ./micro-services/user-service
         ports: 
-            - 8000:8000
-        links: [rabbit]
+            - 4000:4000
+        depends_on: 
+            - rabbit
+        links: 
+            - rabbit
+        network_mode: bridge
 

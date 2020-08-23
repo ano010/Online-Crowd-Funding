@@ -1,4 +1,5 @@
 {
     "db": "mongodb+srv://ano:anocrowd@crowd-funding.smjde.mongodb.net/user?retryWrites=true&w=majority",
-    "port": 4000
+    "port": 4000,
+    "rabbit_host": "rabbit"
 }

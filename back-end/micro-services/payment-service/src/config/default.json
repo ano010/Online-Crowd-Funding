@@ -1,0 +1,4 @@
+{
+    "db_name": "payment",
+    "rabbit_host": "rabbit"
+}

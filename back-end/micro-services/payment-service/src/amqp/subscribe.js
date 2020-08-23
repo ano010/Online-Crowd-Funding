@@ -1,5 +1,5 @@
 const amqp = require('amqplib/callback_api');
-const config = require('config');
+const { config } = require('config');
 
 const ON_POST_CREATED = "ON_POST_CREATED";
 const POST_DIRECT_EX = "post-direct";
@@ -13,13 +13,13 @@ const onPostCreated = cb => {
 
             ch.assertExchange(POST_DIRECT_EX, "direct", {durable: false});
             ch.assertQueue("", {exclusive: true}, function(err, q) {
-                ch.bindQueue(q.queue, POST_DIRECT_EX, ON_POST_CREATED);
-                ch.consume(q.queue, function(msg) {
-                    cb(msg);
-                }, {noAck: true});
+               ch.bindQueue(q.queue, POST_DIRECT_EX, ON_POST_CREATED);
+               ch.consume(q.queue, function(msg) {
+                   return cb(msg)
+               }, {noAck: true});
             });
         });
-    });
-};
+    })
+}
 
 module.exports = {onPostCreated};
